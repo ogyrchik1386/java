@@ -1,24 +1,28 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.lang.Math;
-
 public class HelloWorld {
     public static void main(String[] args) {
-        double a[] = { 2.35, -4.15, 0, -3.1, 7.8, 6.3, -3.05, 1.5 };
-        ArrayList<Double> b = new ArrayList<>();
-        double c = 1;
+        int n = 2;
+        int m = 5;
+        double med = Math.ceil(m / 2);
+        int[][] matrix = {
+                { 2, 3, 4, 5, 6 },
+                { 7, 8, 9, 10, 11 }
+        };
+        System.out.println("matrix");
 
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] > 0) {
-                b.add(a[i]);
-                c = c * a[i];
+        for (int i = 0; i < n; i++) {
+            int k = 0;
+            for (int j = 0; j < med; j++) {
+                int result = matrix[i][j];
+                matrix[i][j] = matrix[i][m - 1 - j];
+                matrix[i][m - 1 - j] = result
+                ;
+                k++;
             }
+            for (int j = 0; j < m; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
         }
-
-        double sqrtResult = Math.sqrt(c);
-
-        System.out.println(b);
-        System.out.println(c);
-        System.out.println(sqrtResult);
     }
 }
+
